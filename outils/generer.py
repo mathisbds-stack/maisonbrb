@@ -17,7 +17,7 @@ INFOS = {
     "tel": "07 81 78 73 60",
     "tel_intl": "+33781787360",
     "email": "contact.maisonbrb@gmail.com",
-    "horaires": "De 8 h à 19 h",
+    "horaires": "Du lundi au samedi, de 8 h à 19 h",
     "nom": "Mathis",          # Prénom NOM de l'entrepreneur (le nom de famille est obligatoire)
     "siret": "981 177 272 00029",
     "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
@@ -110,6 +110,11 @@ def entreprise_ld(type_, nom, page, description, services):
     }
     if INFOS["email"]:
         d["email"] = INFOS["email"]
+    d["openingHoursSpecification"] = [{
+        "@type": "OpeningHoursSpecification",
+        "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+        "opens": "08:00", "closes": "19:00",
+    }]
     if page != "index.html":
         d["parentOrganization"] = {"@id": url("index.html") + "#entreprise"}
     return d
