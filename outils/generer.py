@@ -89,7 +89,7 @@ def entreprise_ld(type_, nom, page, description, services):
         "description": description,
         "url": url(page),
         "image": domaine() + "/assets/og-maison-brb.png",
-        "logo": domaine() + "/assets/monogramme-or.svg",
+        "logo": domaine() + "/assets/logo-carre.png",
         "telephone": INFOS["tel_intl"],
         "address": ADRESSE_LD,
         "geo": {"@type": "GeoCoordinates", **GEO},
@@ -223,7 +223,7 @@ def pied():
   <div class="wrap">
     <div class="foot-top">
       <div>
-        <img src="assets/monogramme-or.svg" alt="Monogramme Maison BRB" width="56" height="37">
+        <img class="logo" src="assets/logo-maison-brb.svg" alt="Maison BRB, l'art de prendre soin de ce qui compte" width="200" height="138">
         <p>Maison BRB : detailing automobile, dépannage informatique et petits travaux à Beaucaire ({CP}, Gard). Nous intervenons à {villes}.</p>
       </div>
       <div>

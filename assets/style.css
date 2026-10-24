@@ -143,8 +143,8 @@ footer{border-top:1px solid rgba(199,167,116,.18)}
 footer .wrap{padding-block:3rem 2rem;display:grid;gap:2rem}
 .foot-top{display:grid;grid-template-columns:minmax(0,1.2fr) repeat(2,minmax(0,1fr));gap:2rem}
 @media (max-width:720px){.foot-top{grid-template-columns:1fr}}
-.foot-top img{width:56px;height:auto;display:block;margin-bottom:.9rem}
-.foot-top p,.foot-top a{font-size:.85rem;color:var(--text-dim)}
+.foot-top img.logo{width:180px;height:auto;display:block;margin-bottom:1.2rem}
+.foot-top p,.foot-top a,.foot-top li{font-size:.85rem;color:var(--text-dim)}
 .foot-top h2{font-family:var(--body);font-weight:500;font-size:.7rem;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:.8rem}
 .foot-top ul{list-style:none;margin:0;padding:0;display:grid;gap:.35rem}
 .foot-top a{text-decoration:none}.foot-top a:hover{color:var(--gold)}
