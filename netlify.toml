@@ -26,3 +26,9 @@
   to = "/404.html"
   status = 404
   force = true
+
+[[redirects]]
+  from = "/identite/*"
+  to = "/404.html"
+  status = 404
+  force = true
