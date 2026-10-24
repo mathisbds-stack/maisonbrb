@@ -18,7 +18,7 @@ INFOS = {
     "tel_intl": "+33781787360",
     "email": "contact.maisonbrb@gmail.com",
     "horaires": "Du lundi au samedi, de 8 h à 19 h",
-    "nom": "Mathis",          # Prénom NOM de l'entrepreneur (le nom de famille est obligatoire)
+    "nom": "Mathis Bordes",   # Prénom NOM de l'entrepreneur
     "siret": "981 177 272 00029",
     "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
     "domaine": None,          # ex. "https://www.maisonbrb.fr" (sans / final) ; sans domaine, les URL restent relatives
