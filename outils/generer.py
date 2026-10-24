@@ -16,12 +16,12 @@ RACINE = Path(__file__).resolve().parent.parent
 INFOS = {
     "tel": "07 81 78 73 60",
     "tel_intl": "+33781787360",
-    "email": None,            # ex. "contact@maisonbrb.fr"
-    "horaires": None,         # ex. "Du lundi au samedi, de 8 h à 19 h"
-    "nom": None,              # Prénom NOM de l'entrepreneur
-    "siret": None,            # 14 chiffres
-    "adresse": None,          # adresse postale complète (obligatoire dans les mentions légales)
-    "domaine": None,          # ex. "https://www.maisonbrb.fr" (sans / final)
+    "email": "contact.maisonbrb@gmail.com",
+    "horaires": "De 8 h à 19 h",
+    "nom": "Mathis",          # Prénom NOM de l'entrepreneur (le nom de famille est obligatoire)
+    "siret": "981 177 272 00029",
+    "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
+    "domaine": None,          # ex. "https://www.maisonbrb.fr" (sans / final) ; sans domaine, les URL restent relatives
     "hebergeur": None,        # ex. "OVH SAS, 2 rue Kellermann, 59100 Roubaix, 1007"
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
@@ -43,11 +43,17 @@ def info(cle):
 
 
 def domaine():
-    return (INFOS["domaine"] or "https://VOTRE-DOMAINE.fr").rstrip("/")
+    return (INFOS["domaine"] or "").rstrip("/")
 
 
 def url(page):
+    if not domaine():
+        return "./" if page == "index.html" else page
     return domaine() + "/" + ("" if page == "index.html" else page)
+
+
+def asset(nom):
+    return (domaine() + "/" if domaine() else "") + "assets/" + nom
 
 
 # ---------------------------------------------------------------------------
@@ -88,8 +94,8 @@ def entreprise_ld(type_, nom, page, description, services):
         "name": nom,
         "description": description,
         "url": url(page),
-        "image": domaine() + "/assets/og-maison-brb.png",
-        "logo": domaine() + "/assets/logo-carre.png",
+        "image": asset("og-maison-brb.png"),
+        "logo": asset("logo-carre.png"),
         "telephone": INFOS["tel_intl"],
         "address": ADRESSE_LD,
         "geo": {"@type": "GeoCoordinates", **GEO},
@@ -136,6 +142,11 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
         '<script type="application/ld+json">' + json.dumps(d, ensure_ascii=False) + "</script>"
         for d in donnees
     )
+    og_absolu = f"""<meta property="og:url" content="{url(page)}">
+<meta property="og:image" content="{asset('og-maison-brb.png')}">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+""" if domaine() else ""
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -155,11 +166,7 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
 <meta property="og:site_name" content="Maison BRB">
 <meta property="og:title" content="{titre}">
 <meta property="og:description" content="{description}">
-<meta property="og:url" content="{url(page)}">
-<meta property="og:image" content="{domaine()}/assets/og-maison-brb.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
+{og_absolu}<meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
 <link rel="icon" href="assets/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
@@ -672,9 +679,13 @@ def main():
         "index.html": page_accueil(),
         "mentions-legales.html": page_mentions(),
         "404.html": page_404(),
-        "sitemap.xml": sitemap(),
-        "robots.txt": f"User-agent: *\nAllow: /\n\nSitemap: {domaine()}/sitemap.xml\n",
+        "robots.txt": "User-agent: *\nAllow: /\n" + (f"\nSitemap: {domaine()}/sitemap.xml\n" if domaine() else ""),
     }
+    # Le plan du site exige des adresses absolues : il n'est produit qu'une fois le domaine connu.
+    if domaine():
+        fichiers["sitemap.xml"] = sitemap()
+    else:
+        (RACINE / "sitemap.xml").unlink(missing_ok=True)
     for a in ACTIVITES:
         fichiers[a["page"]] = page_activite(a)
     for nom, contenu in fichiers.items():

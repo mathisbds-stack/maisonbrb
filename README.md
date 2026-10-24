@@ -13,6 +13,7 @@ et la liste des communes desservies se trouvent en haut de `outils/generer.py`.
 Après modification : `python3 outils/generer.py`, puis remettre les fichiers en ligne.
 
 ## Mise en ligne
-Déposer tout le contenu du dossier (sauf `outils/` et `README.md`) chez l'hébergeur
+Renseigner le domaine dans `outils/generer.py` et relancer le script (cela ajoute `sitemap.xml`
+et les liens canoniques). Déposer ensuite tout le contenu du dossier (sauf `outils/` et `README.md`) chez l'hébergeur
 (OVH, o2switch, Netlify, GitHub Pages…). Puis déclarer `sitemap.xml` dans Google Search Console
 et créer la fiche Google Business Profile avec le même nom, numéro et adresse que le site.
