@@ -1,0 +1,28 @@
+# Site statique : aucune compilation, les pages sont à la racine.
+[build]
+  publish = "."
+
+# Les fichiers de travail ne doivent pas être accessibles en ligne.
+[[redirects]]
+  from = "/outils/*"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/README.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/CLAUDE.md"
+  to = "/404.html"
+  status = 404
+  force = true
+
+[[redirects]]
+  from = "/netlify.toml"
+  to = "/404.html"
+  status = 404
+  force = true

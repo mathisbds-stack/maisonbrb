@@ -22,7 +22,7 @@ INFOS = {
     "siret": "981 177 272 00029",
     "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
     "domaine": None,          # ex. "https://www.maisonbrb.fr" (sans / final) ; sans domaine, les URL restent relatives
-    "hebergeur": None,        # ex. "OVH SAS, 2 rue Kellermann, 59100 Roubaix, 1007"
+    "hebergeur": "Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (www.netlify.com)",
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
 
