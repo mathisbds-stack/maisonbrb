@@ -370,7 +370,7 @@ ACTIVITES = [
     },
     {
         "page": "beaucaire-informatique.html",
-        "site": None,  # adresse du site propre à cette maison, s'il existe
+        "site": "https://beaucaire-informatique.netlify.app",  # adresse du site propre à cette maison, s'il existe
         "nom": "Beaucaire Informatique",
         "icone": "info",
         "type": "ProfessionalService",
