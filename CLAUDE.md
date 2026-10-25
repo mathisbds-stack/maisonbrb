@@ -7,6 +7,6 @@
   en haut de `outils/generer.py` ; ne pas éditer les pages HTML générées à la main.
 - Charte à respecter : noir #0B0B0B, or #C7A774, crème #F8F6EF ; Cormorant Garamond et Montserrat.
 - Hébergement : Netlify (configuration dans `netlify.toml`). Domaine : https://maisonbrb.fr (DNS gérés par Netlify),
-  maisonbrb.netlify.app redirige vers lui. Autres domaines achetés chez IONOS : brbmultiservices.fr (redirigé vers
-  la page Multiservices), beaucaireinformatique.fr (site Beaucaire Informatique).
+  maisonbrb.netlify.app redirige vers lui. Autres domaines achetés chez IONOS : brbmultiservices.fr (site
+  BRB Multiservices), beaucaireinformatique.fr (site Beaucaire Informatique).
   Encore à renseigner dans `INFOS` : médiateur de la consommation.

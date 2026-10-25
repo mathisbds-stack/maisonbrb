@@ -405,7 +405,7 @@ ACTIVITES = [
     },
     {
         "page": "brb-multiservices.html",
-        "site": None,  # adresse du site propre à cette maison, s'il existe
+        "site": "https://brbmultiservices.fr",  # adresse du site propre à cette maison, s'il existe
         "nom": "BRB Multiservices",
         "icone": "bat",
         "type": "LocalBusiness",
