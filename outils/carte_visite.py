@@ -59,7 +59,7 @@ ORIG = {
     11: ("corm_i", "Rénovation & aménagement", 13.90, 203.06),
 }
 NEW = {
-    1: "Mathis BORDES", 3: "07 81 78 73 60", 4: "contact.maisonbrb@gmail.com", 5: "maisonbrb.netlify.app",
+    1: "Mathis BORDES", 3: "07 81 78 73 60", 4: "contact.maisonbrb@gmail.com", 5: "maisonbrb.fr",
     10: "BRB MULTISERVICES", 11: "Petits travaux & bricolage",
 }
 

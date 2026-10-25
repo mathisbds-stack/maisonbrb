@@ -39,3 +39,28 @@
   to = "/brb-multiservices.html"
   status = 301
   force = true
+
+# brbmultiservices.fr (alias de domaine de ce site Netlify) -> page BRB Multiservices
+[[redirects]]
+  from = "https://brbmultiservices.fr/*"
+  to = "https://maisonbrb.fr/brb-multiservices.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "https://www.brbmultiservices.fr/*"
+  to = "https://maisonbrb.fr/brb-multiservices.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://brbmultiservices.fr/*"
+  to = "https://maisonbrb.fr/brb-multiservices.html"
+  status = 301
+  force = true
+
+[[redirects]]
+  from = "http://www.brbmultiservices.fr/*"
+  to = "https://maisonbrb.fr/brb-multiservices.html"
+  status = 301
+  force = true
