@@ -23,6 +23,7 @@ INFOS = {
     "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
     "domaine": "https://maisonbrb.netlify.app",  # sans / final
     "hebergeur": "Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (www.netlify.com)",
+    "google_verification": "p5qmlXsR6yuusQwi-iqDYs9H5HvGm7Gv-9Fm0kZRS4Q",  # Google Search Console
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
 
@@ -152,6 +153,7 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 """ if domaine() else ""
+    verif_google = f'<meta name="google-site-verification" content="{INFOS["google_verification"]}">\n' if INFOS["google_verification"] else ""
     return f"""<!doctype html>
 <html lang="fr">
 <head>
@@ -162,7 +164,7 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url(page)}">
 <meta name="theme-color" content="#0B0B0B">
-<meta name="geo.region" content="FR-30">
+{verif_google}<meta name="geo.region" content="FR-30">
 <meta name="geo.placename" content="Beaucaire">
 <meta name="geo.position" content="{GEO['latitude']};{GEO['longitude']}">
 <meta name="ICBM" content="{GEO['latitude']}, {GEO['longitude']}">
