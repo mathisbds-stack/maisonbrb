@@ -335,7 +335,7 @@ def etapes_section(titre, intro, etapes):
 ACTIVITES = [
     {
         "page": "brb-autopro.html",
-        "site": None,  # adresse du site propre à cette maison, s'il existe
+        "site": "https://brbautopro.fr",  # adresse du site propre à cette maison, s'il existe
         "nom": "BRB AutoPro",
         "icone": "auto",
         "type": "AutoWash",
