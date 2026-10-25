@@ -75,7 +75,7 @@ NAV = [
     ("index.html", "Accueil"),
     ("brb-autopro.html", "BRB AutoPro"),
     ("beaucaire-informatique.html", "Informatique"),
-    ("brb-batiment.html", "Bâtiment"),
+    ("brb-multiservices.html", "Multiservices"),
 ]
 
 ADRESSE_LD = {
@@ -245,7 +245,7 @@ def pied():
         <ul>
           <li><a href="brb-autopro.html">BRB AutoPro, detailing automobile</a></li>
           <li><a href="beaucaire-informatique.html">Beaucaire Informatique, dépannage</a></li>
-          <li><a href="brb-batiment.html">BRB Bâtiment, petits travaux</a></li>
+          <li><a href="brb-multiservices.html">BRB Multiservices, petits travaux</a></li>
         </ul>
       </div>
       <div>
@@ -400,23 +400,23 @@ ACTIVITES = [
         ],
     },
     {
-        "page": "brb-batiment.html",
-        "nom": "BRB Bâtiment",
+        "page": "brb-multiservices.html",
+        "nom": "BRB Multiservices",
         "icone": "bat",
-        "type": "HomeAndConstructionBusiness",
-        "titre": "BRB Bâtiment · Petits travaux et montage de meubles à Beaucaire",
-        "description": "BRB Bâtiment, petits travaux à Beaucaire : montage de meubles, pose d'étagères, tringles et supports TV, petites réparations et entretien de la maison. Tarascon, Nîmes, Arles.",
-        "h1": "Petits travaux et entretien à Beaucaire",
+        "type": "LocalBusiness",
+        "titre": "BRB Multiservices · Petits travaux de bricolage et montage de meubles à Beaucaire",
+        "description": "BRB Multiservices à Beaucaire : petits travaux de bricolage, montage de meubles, pose d'étagères, tringles et supports TV, petites réparations du quotidien. Tarascon, Nîmes, Arles.",
+        "h1": "Petits travaux de bricolage à Beaucaire",
         "lead": "Les petites tâches de la maison confiées à quelqu'un de soigneux, qui arrive à l'heure et laisse les lieux propres.",
-        "activite": "en petits travaux",
+        "activite": "en petits travaux de bricolage",
         "prestations_intro": "Ces petits travaux qu'on repousse depuis des semaines, réalisés proprement et rapidement.",
         "prestations": [
-            ("Montage de meubles", "Armoires, lits, cuisines en kit, bureaux, dressings : montage soigné, réglé et fixé au mur si nécessaire."),
+            ("Montage de meubles", "Armoires, lits, meubles en kit, bureaux, dressings : montage soigné, réglé et fixé au mur si nécessaire."),
             ("Fixations murales", "Étagères, tringles à rideaux, supports TV, miroirs, cadres : perçage adapté à votre mur, niveau et solidité vérifiés."),
-            ("Petites réparations", "Porte qui frotte, poignée cassée, joint à refaire, silicone, petits ajustements du quotidien."),
-            ("Entretien courant de l'habitat", "Petits travaux d'entretien intérieur et extérieur pour garder votre logement en bon état."),
+            ("Petites réparations", "Porte qui frotte, poignée ou charnière cassée, joint silicone à reprendre : les petits ajustements du quotidien."),
+            ("Bricolage du quotidien", "Les petites interventions qui facilitent la vie : remplacement d'accessoires, réglages, petits travaux d'entretien."),
             ("Aménagement et rangement", "Installation de rangements, patères, crochets et accessoires pour optimiser vos espaces."),
-            ("Aide à l'emménagement", "Montage, fixations et finitions pour vous installer sereinement dans votre nouveau logement."),
+            ("Aide à l'emménagement", "Montage de meubles et fixations pour vous installer sereinement dans votre nouveau logement."),
         ],
         "etapes_titre": "Ponctuel, soigneux, et les lieux restent propres",
         "etapes_intro": "Pour les petits travaux, la confiance compte autant que le geste. Voici nos engagements.",
@@ -424,11 +424,12 @@ ACTIVITES = [
             ("Devis clair", "Vous décrivez le besoin, avec une photo si possible, et recevez un devis précis avant toute intervention."),
             ("Ponctualité", "Un créneau convenu ensemble et respecté. Vous êtes prévenu en cas d'imprévu."),
             ("Travail soigné", "Le bon outillage et les bonnes fixations pour un résultat solide et durable."),
-            ("Lieux propres", "Protection des sols, nettoyage en fin de chantier et emballages emportés sur demande."),
+            ("Lieux propres", "Protection des sols, nettoyage en fin d'intervention et emballages emportés sur demande."),
         ],
         "faq": [
-            ("Intervenez-vous pour les petits travaux à Beaucaire et aux alentours ?", "Oui. BRB Bâtiment intervient à Beaucaire, Tarascon, Vallabrègues, Comps, Aramon, Montfrin, Nîmes, Arles et dans les communes voisines."),
-            ("Quels types de travaux réalisez-vous ?", "Les petits travaux et l'entretien de la maison : montage de meubles, fixations murales, petites réparations, aménagements de rangement. Pour un chantier plus important, contactez-nous pour en parler."),
+            ("Intervenez-vous pour les petits travaux à Beaucaire et aux alentours ?", "Oui. BRB Multiservices intervient à Beaucaire, Tarascon, Vallabrègues, Comps, Aramon, Montfrin, Nîmes, Arles et dans les communes voisines."),
+            ("Quels types de travaux réalisez-vous ?", "Des petits travaux de bricolage : montage de meubles, fixations murales, petites réparations du quotidien, aménagements de rangement."),
+            ("Faites-vous des travaux de rénovation, d'électricité ou de plomberie ?", "Non. BRB Multiservices se consacre aux petits travaux de bricolage. Pour la rénovation, la maçonnerie, l'électricité ou la plomberie, faites appel à un artisan qualifié du bâtiment."),
             ("Pouvez-vous fixer une télévision au mur ?", "Oui. Nous posons votre support TV en choisissant les chevilles adaptées à votre mur, avec un résultat de niveau et solide."),
             ("Le devis est-il gratuit ?", "Oui, le devis est gratuit et sans engagement. Une photo de ce qu'il y a à faire permet souvent de vous répondre plus vite."),
         ],
@@ -527,12 +528,12 @@ def page_accueil():
     puces = {
         "brb-autopro.html": ["Nettoyage intérieur en profondeur", "Lavage et décontamination extérieure", "Polissage et rénovation des optiques", "Protection de la carrosserie"],
         "beaucaire-informatique.html": ["Dépannage et réparation", "Installation et configuration", "Nettoyage et optimisation", "Assistance et initiation"],
-        "brb-batiment.html": ["Montage de meubles", "Fixations : étagères, tringles, supports TV", "Petites réparations ponctuelles", "Entretien courant de l'habitat"],
+        "brb-multiservices.html": ["Montage de meubles", "Fixations : étagères, tringles, supports TV", "Petites réparations ponctuelles", "Aménagement et rangement"],
     }
     sous_titres = {
         "brb-autopro.html": ("Detailing automobile", "L'esthétique et la protection de votre véhicule, à l'intérieur comme à l'extérieur, avec le soin d'un atelier haut de gamme."),
         "beaucaire-informatique.html": ("Dépannage &amp; assistance", "Un ordinateur lent, une panne, une installation à faire : intervention à domicile ou en atelier, avec des explications claires."),
-        "brb-batiment.html": ("Petits travaux &amp; entretien", "Les petites tâches de la maison confiées à quelqu'un de soigneux, qui arrive à l'heure et laisse les lieux propres."),
+        "brb-multiservices.html": ("Petits travaux &amp; bricolage", "Les petites tâches de la maison confiées à quelqu'un de soigneux, qui arrive à l'heure et laisse les lieux propres."),
     }
     for a in ACTIVITES:
         h3, p = sous_titres[a["page"]]
@@ -612,7 +613,7 @@ def page_mentions():
       <div class="prose">
         <section>
           <h2>Éditeur du site</h2>
-          <p>Le présent site est édité par <strong>{info('nom')}</strong>, entrepreneur individuel (EI), exerçant sous le nom commercial <strong>Maison BRB</strong> et sous les enseignes BRB AutoPro, Beaucaire Informatique et BRB Bâtiment.</p>
+          <p>Le présent site est édité par <strong>{info('nom')}</strong>, entrepreneur individuel (EI), exerçant sous le nom commercial <strong>Maison BRB</strong> et sous les enseignes BRB AutoPro, Beaucaire Informatique et BRB Multiservices.</p>
           <ul>
             <li>Adresse : {info('adresse')}</li>
             <li>SIRET : {info('siret')}</li>

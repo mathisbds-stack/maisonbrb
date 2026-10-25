@@ -2,7 +2,7 @@
 """Remplace les coordonnées du verso de la carte de visite (texte vectorisé, aucune police à installer).
 
 Usage : python3 outils/carte_visite.py DOSSIER_POLICES VERSO_ORIGINAL.svg VERSO_SORTIE.svg
-DOSSIER_POLICES contient Cormorant-600.ttf et Montserrat-400.ttf (Google Fonts).
+DOSSIER_POLICES contient Cormorant-600.ttf, Cormorant-500i.ttf, Montserrat-400.ttf et Montserrat-500.ttf (Google Fonts).
 """
 import re, sys
 from fontTools.ttLib import TTFont
@@ -11,7 +11,10 @@ from fontTools.pens.transformPen import TransformPen
 from fontTools.pens.boundsPen import BoundsPen
 
 F = sys.argv[1]
-FONTS = {"corm": TTFont(F + "/Cormorant-600.ttf"), "mont": TTFont(F + "/Montserrat-400.ttf")}
+FONTS = {
+    "corm": TTFont(F + "/Cormorant-600.ttf"), "mont": TTFont(F + "/Montserrat-400.ttf"),
+    "corm_i": TTFont(F + "/Cormorant-500i.ttf"), "mont_m": TTFont(F + "/Montserrat-500.ttf"),
+}
 
 def layout(font, text, size, track):
     """Glyphes posés sur la ligne de base (y vers le bas), avec approche (tracking) en unités px."""
@@ -52,11 +55,17 @@ ORIG = {
     3: ("mont", "06 XX XX XX XX", 11.30, 128.29),
     4: ("mont", "votre@email.fr", 11.95, 125.42),
     5: ("mont", "www.votresite.fr", 11.95, 139.23),
+    10: ("mont_m", "BRB BÂTIMENT", 11.97, 123.27),
+    11: ("corm_i", "Rénovation & aménagement", 13.90, 203.06),
 }
-NEW = {1: "Mathis BORDES", 3: "07 81 78 73 60", 4: "contact.maisonbrb@gmail.com", 5: "maisonbrb.netlify.app"}
+NEW = {
+    1: "Mathis BORDES", 3: "07 81 78 73 60", 4: "contact.maisonbrb@gmail.com", 5: "maisonbrb.netlify.app",
+    10: "BRB MULTISERVICES", 11: "Petits travaux & bricolage",
+}
 
 src = open(sys.argv[2], encoding="utf-8").read()
-paths = list(re.finditer(r'<path[^>]*/>', src))
+# Seuls les tracés positionnés (logo et textes) sont numérotés, pas ceux des icônes.
+paths = list(re.finditer(r'<path transform="translate[^>]*/>', src))
 out, last = [], 0
 for i, m in enumerate(paths):
     if i in ORIG:

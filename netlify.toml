@@ -32,3 +32,10 @@
   to = "/404.html"
   status = 404
   force = true
+
+# Ancienne page renommée (BRB Bâtiment -> BRB Multiservices)
+[[redirects]]
+  from = "/brb-batiment.html"
+  to = "/brb-multiservices.html"
+  status = 301
+  force = true
