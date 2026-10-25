@@ -30,4 +30,14 @@ document.querySelectorAll('.copy').forEach(function(b){
   document.querySelectorAll('[data-cookies]').forEach(function(b){b.addEventListener('click',function(){box.hidden=false})});
   var c=lire();
   if(c==='granted')charger();else if(!c)box.hidden=false;
+
+  // Conversion « Demande de devis » : clic sur un numéro de téléphone ou une adresse e-mail.
+  // Envoi sans attendre la réponse de Google, pour ne jamais retarder l'appel ou l'e-mail.
+  var conv=box.dataset.conversion;
+  if(!conv)return;
+  document.addEventListener('click',function(e){
+    var a=e.target.closest&&e.target.closest('a[href^="tel:"],a[href^="mailto:"]');
+    if(!a||lire()!=='granted')return;
+    gtag('event','conversion',{send_to:conv,value:1.0,currency:'EUR',transport_type:'beacon'});
+  });
 })();

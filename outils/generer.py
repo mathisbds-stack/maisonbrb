@@ -25,6 +25,7 @@ INFOS = {
     "hebergeur": "Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (www.netlify.com)",
     "google_verification": "C2Wf197ytiRsC117qYJnFB4wuA2djjeU7kxGrJUd7Hs",  # Google Search Console
     "google_ads": "AW-18536869011",  # balise Google Ads, chargée seulement après accord du visiteur
+    "google_ads_devis": "AW-18536869011/pi5FCOq0vakdEJPZiIdF",  # conversion « Demande de devis » (clic téléphone / e-mail)
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
 
@@ -247,7 +248,7 @@ def contact(activite=None):
 def bandeau_cookies():
     if not INFOS["google_ads"]:
         return ""
-    return f"""<div class="consent" id="consent" role="dialog" aria-labelledby="consent-titre" data-gtag="{INFOS['google_ads']}" hidden>
+    return f"""<div class="consent" id="consent" role="dialog" aria-labelledby="consent-titre" data-gtag="{INFOS['google_ads']}" data-conversion="{INFOS['google_ads_devis'] or ''}" hidden>
   <p id="consent-titre" class="consent-titre">Cookies</p>
   <p>Avec votre accord, nous utilisons des cookies Google Ads pour mesurer l'efficacité de nos annonces. Vous pouvez changer d'avis à tout moment via « Gérer les cookies » en bas de page. <a href="mentions-legales.html#cookies">En savoir plus</a></p>
   <div class="consent-btns"><button class="btn" type="button" data-consent="denied">Refuser</button><button class="btn" type="button" data-consent="granted">Accepter</button></div>
