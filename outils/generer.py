@@ -87,7 +87,7 @@ ADRESSE_LD = {
 }
 
 
-def entreprise_ld(type_, nom, page, description, services):
+def entreprise_ld(type_, nom, page, description, services, site=None):
     d = {
         "@context": "https://schema.org",
         "@type": type_,
@@ -111,6 +111,8 @@ def entreprise_ld(type_, nom, page, description, services):
     }
     if INFOS["email"]:
         d["email"] = INFOS["email"]
+    if site:
+        d["sameAs"] = [site]
     d["openingHoursSpecification"] = [{
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
@@ -333,6 +335,7 @@ def etapes_section(titre, intro, etapes):
 ACTIVITES = [
     {
         "page": "brb-autopro.html",
+        "site": None,  # adresse du site propre à cette maison, s'il existe
         "nom": "BRB AutoPro",
         "icone": "auto",
         "type": "AutoWash",
@@ -367,6 +370,7 @@ ACTIVITES = [
     },
     {
         "page": "beaucaire-informatique.html",
+        "site": None,  # adresse du site propre à cette maison, s'il existe
         "nom": "Beaucaire Informatique",
         "icone": "info",
         "type": "ProfessionalService",
@@ -401,6 +405,7 @@ ACTIVITES = [
     },
     {
         "page": "brb-multiservices.html",
+        "site": None,  # adresse du site propre à cette maison, s'il existe
         "nom": "BRB Multiservices",
         "icone": "bat",
         "type": "LocalBusiness",
@@ -437,10 +442,17 @@ ACTIVITES = [
 ]
 
 
+def lien_site(a, classe="ext"):
+    """Lien vers le site propre de la maison, ouvert dans un nouvel onglet (rien si elle n'en a pas)."""
+    if not a["site"]:
+        return ""
+    return f'<a class="{classe}" href="{a["site"]}" target="_blank" rel="noopener">Voir le site de {a["nom"]} <span aria-hidden="true">↗</span></a>'
+
+
 def page_activite(a):
     services = [p[0] for p in a["prestations"]]
     donnees = [
-        entreprise_ld(a["type"], a["nom"], a["page"], a["description"], services),
+        entreprise_ld(a["type"], a["nom"], a["page"], a["description"], services, a["site"]),
         fil_ld(a["page"], a["nom"]),
         faq_ld(a["faq"]),
     ]
@@ -458,6 +470,7 @@ def page_activite(a):
           <h3>{x['h1'].replace(' à Beaucaire', '')}</h3>
           <p>{x['lead']}</p>
           <a class="go" href="{x['page']}"><span>Découvrir {x['nom']}</span><span aria-hidden="true">→</span></a>
+          {lien_site(x)}
         </article>""" for x in autres
     )
     corps = f"""<main id="contenu">
@@ -471,6 +484,7 @@ def page_activite(a):
       <div class="btns">
         <a class="btn solid" href="tel:{INFOS['tel_intl']}">Appeler · {INFOS['tel']}</a>
         <a class="btn" href="#prestations">Nos prestations <span aria-hidden="true">↓</span></a>
+        {lien_site(a, "btn")}
       </div>
     </div>
   </section>
@@ -544,7 +558,8 @@ def page_accueil():
           <h3>{h3}</h3>
           <p>{p}</p>
           <ul>{li}</ul>
-          <a class="go" href="{a['page']}"><span>Visiter {a['nom']}</span><span aria-hidden="true">→</span></a>
+          <a class="go" href="{a['page']}"><span>Découvrir {a['nom']}</span><span aria-hidden="true">→</span></a>
+          {lien_site(a)}
         </article>""")
     cartes = "\n".join(cartes)
     corps = f"""<main id="contenu">
