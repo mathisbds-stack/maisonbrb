@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://maisonbrb.netlify.app/</loc><priority>1.0</priority></url>
-  <url><loc>https://maisonbrb.netlify.app/brb-autopro.html</loc><priority>0.8</priority></url>
-  <url><loc>https://maisonbrb.netlify.app/beaucaire-informatique.html</loc><priority>0.8</priority></url>
-  <url><loc>https://maisonbrb.netlify.app/brb-multiservices.html</loc><priority>0.8</priority></url>
+  <url><loc>https://maisonbrb.fr/</loc><priority>1.0</priority></url>
+  <url><loc>https://maisonbrb.fr/brb-autopro.html</loc><priority>0.8</priority></url>
+  <url><loc>https://maisonbrb.fr/beaucaire-informatique.html</loc><priority>0.8</priority></url>
+  <url><loc>https://maisonbrb.fr/brb-multiservices.html</loc><priority>0.8</priority></url>
 </urlset>

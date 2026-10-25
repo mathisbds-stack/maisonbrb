@@ -2,6 +2,13 @@
 [build]
   publish = "."
 
+# Ancienne adresse Netlify -> domaine principal
+[[redirects]]
+  from = "https://maisonbrb.netlify.app/*"
+  to = "https://maisonbrb.fr/:splat"
+  status = 301
+  force = true
+
 # Les fichiers de travail ne doivent pas être accessibles en ligne.
 [[redirects]]
   from = "/outils/*"
