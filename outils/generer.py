@@ -24,6 +24,7 @@ INFOS = {
     "domaine": "https://maisonbrb.fr",  # sans / final
     "hebergeur": "Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (www.netlify.com)",
     "google_verification": "C2Wf197ytiRsC117qYJnFB4wuA2djjeU7kxGrJUd7Hs",  # Google Search Console
+    "google_ads": "AW-18536869011",  # balise Google Ads, chargée seulement après accord du visiteur
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
 
@@ -155,6 +156,16 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 """ if domaine() else ""
+    # Mode consentement Google : tout est refusé par défaut ; la balise n'est chargée (assets/site.js)
+    # qu'après un clic sur « Accepter » dans le bandeau.
+    balise_ads = f"""<script>
+window.dataLayer = window.dataLayer || [];
+function gtag(){{dataLayer.push(arguments);}}
+gtag('consent', 'default', {{ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied', analytics_storage: 'denied'}});
+gtag('js', new Date());
+gtag('config', '{INFOS["google_ads"]}');
+</script>
+""" if INFOS["google_ads"] else ""
     verif_google = f'<meta name="google-site-verification" content="{INFOS["google_verification"]}">\n' if INFOS["google_verification"] else ""
     return f"""<!doctype html>
 <html lang="fr">
@@ -166,7 +177,7 @@ def tete(page, titre, description, donnees=(), robots="index, follow"):
 <meta name="robots" content="{robots}">
 <link rel="canonical" href="{url(page)}">
 <meta name="theme-color" content="#0B0B0B">
-{verif_google}<meta name="geo.region" content="FR-30">
+{verif_google}{balise_ads}<meta name="geo.region" content="FR-30">
 <meta name="geo.placename" content="Beaucaire">
 <meta name="geo.position" content="{GEO['latitude']};{GEO['longitude']}">
 <meta name="ICBM" content="{GEO['latitude']}, {GEO['longitude']}">
@@ -233,6 +244,17 @@ def contact(activite=None):
 """
 
 
+def bandeau_cookies():
+    if not INFOS["google_ads"]:
+        return ""
+    return f"""<div class="consent" id="consent" role="dialog" aria-labelledby="consent-titre" data-gtag="{INFOS['google_ads']}" hidden>
+  <p id="consent-titre" class="consent-titre">Cookies</p>
+  <p>Avec votre accord, nous utilisons des cookies Google Ads pour mesurer l'efficacité de nos annonces. Vous pouvez changer d'avis à tout moment via « Gérer les cookies » en bas de page. <a href="mentions-legales.html#cookies">En savoir plus</a></p>
+  <div class="consent-btns"><button class="btn" type="button" data-consent="denied">Refuser</button><button class="btn" type="button" data-consent="granted">Accepter</button></div>
+</div>
+"""
+
+
 def pied():
     villes = ", ".join(ZONE[:-1]) + " et " + ZONE[-1]
     return f"""<footer>
@@ -261,11 +283,11 @@ def pied():
     </div>
     <div class="foot-bottom">
       <span>Maison BRB · {info('nom')} EI · SIRET {info('siret')}</span>
-      <a href="mentions-legales.html">Mentions légales</a>
+      <span class="foot-links">{'<button class="linkish" type="button" data-cookies>Gérer les cookies</button>' if INFOS['google_ads'] else ''}<a href="mentions-legales.html">Mentions légales</a></span>
     </div>
   </div>
 </footer>
-<a class="callbar" href="tel:{INFOS['tel_intl']}"><span aria-hidden="true">☎</span> Appeler · {INFOS['tel']}</a>
+{bandeau_cookies()}<a class="callbar" href="tel:{INFOS['tel_intl']}"><span aria-hidden="true">☎</span> Appeler · {INFOS['tel']}</a>
 <script src="assets/site.js" defer></script>
 </body>
 </html>
@@ -647,13 +669,15 @@ def page_mentions():
         </section>
         <section>
           <h2>Données personnelles</h2>
-          <p>Ce site ne comporte ni formulaire, ni création de compte, ni outil de mesure d'audience. Aucune donnée personnelle n'y est collectée directement.</p>
+          <p>Ce site ne comporte ni formulaire ni création de compte. Les seules données collectées en ligne sont celles des cookies décrits ci-dessous, et uniquement avec votre accord.</p>
           <p>Les informations que vous transmettez par téléphone ou par e-mail (nom, coordonnées, description de votre besoin) sont utilisées uniquement pour répondre à votre demande, établir un devis et réaliser la prestation. Elles ne sont ni vendues ni cédées à des tiers, et sont conservées le temps nécessaire à la relation commerciale et aux obligations comptables.</p>
           <p>Conformément au Règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, d'effacement et d'opposition sur vos données. Pour l'exercer, contactez-nous par e-mail ou par téléphone. Vous pouvez également adresser une réclamation à la CNIL (www.cnil.fr).</p>
         </section>
-        <section>
+        <section id="cookies">
           <h2>Cookies et services tiers</h2>
-          <p>Ce site ne dépose aucun cookie publicitaire ou de mesure d'audience. Les polices de caractères sont chargées depuis le service Google Fonts, ce qui implique la transmission de votre adresse IP à Google lors de l'affichage des pages.</p>
+          <p>Si vous cliquez sur « Accepter » dans le bandeau cookies, ce site charge la balise Google Ads (Google Ireland Ltd), qui dépose des cookies servant à mesurer l'efficacité de nos annonces publicitaires, par exemple savoir si une visite fait suite à une annonce. Ces cookies sont conservés au maximum 13 mois. Si vous refusez, aucune balise Google Ads n'est chargée et aucun cookie publicitaire n'est déposé.</p>
+          <p>Votre choix est enregistré dans votre navigateur pendant 6 mois, puis vous sera redemandé. Vous pouvez le modifier à tout moment grâce au lien « Gérer les cookies » en bas de chaque page.</p>
+          <p>Les polices de caractères sont chargées depuis le service Google Fonts, ce qui implique la transmission de votre adresse IP à Google lors de l'affichage des pages.</p>
         </section>
         <section>
           <h2>Médiation de la consommation</h2>

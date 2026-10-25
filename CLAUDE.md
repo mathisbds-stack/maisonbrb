@@ -10,3 +10,5 @@
   maisonbrb.netlify.app redirige vers lui. Autres domaines achetés chez IONOS : brbmultiservices.fr (site
   BRB Multiservices), beaucaireinformatique.fr (site Beaucaire Informatique).
   Encore à renseigner dans `INFOS` : médiateur de la consommation.
+- Google Ads (`INFOS["google_ads"]`) : balise chargée uniquement après accord dans le bandeau cookies
+  (`assets/site.js`) ; ne jamais la charger sans consentement (CNIL).

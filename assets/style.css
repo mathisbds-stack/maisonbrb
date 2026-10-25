@@ -161,3 +161,16 @@ footer .wrap{padding-block:3rem 2rem;display:grid;gap:2rem}
 /* lien vers le site propre d'une maison */
 .house .ext{align-self:flex-start;margin-top:-.4rem;font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;color:#7A6543;text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:.15rem}
 .house .ext:hover{color:var(--ink)}
+
+/* bandeau cookies */
+.consent{position:fixed;left:16px;right:16px;bottom:max(16px,env(safe-area-inset-bottom,0px));z-index:8;max-width:34rem;margin-left:auto;background:var(--ink);color:var(--ivory);border:1px solid rgba(199,167,116,.45);padding:1.4rem 1.5rem;display:grid;gap:.8rem;box-shadow:0 12px 32px rgba(0,0,0,.5);font-size:.85rem}
+.consent[hidden]{display:none}
+.consent .consent-titre{font-family:var(--display);font-size:1.4rem;color:var(--gold)}
+.consent p{color:var(--text-dim)}
+.consent a{color:var(--gold)}
+.consent-btns{display:flex;gap:.6rem;flex-wrap:wrap}
+.consent-btns .btn{flex:1;justify-content:center;padding:.8rem 1rem;background:none;font-family:var(--body);cursor:pointer}
+.consent-btns .btn:hover{background:var(--gold);color:var(--ink)}
+.foot-links{display:flex;gap:1.4rem}
+.linkish{background:none;border:0;padding:0;font:inherit;color:inherit;cursor:pointer}
+.linkish:hover{color:var(--gold)}
