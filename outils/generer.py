@@ -23,7 +23,7 @@ INFOS = {
     "adresse": "59 rue de Ponthieu, bureau 326, 75008 Paris",
     "domaine": "https://maisonbrb.netlify.app",  # sans / final
     "hebergeur": "Netlify, Inc., 512 2nd Street, Suite 200, San Francisco, CA 94107, États-Unis (www.netlify.com)",
-    "google_verification": "p5qmlXsR6yuusQwi-iqDYs9H5HvGm7Gv-9Fm0kZRS4Q",  # Google Search Console
+    "google_verification": "C2Wf197ytiRsC117qYJnFB4wuA2djjeU7kxGrJUd7Hs",  # Google Search Console
     "mediateur": None,        # médiateur de la consommation : nom, adresse, site web
 }
 
