@@ -73,7 +73,7 @@ def icone(nom, fond="#fff"):
 
 NAV = [
     ("index.html", "Accueil"),
-    ("brb-autopro.html", "BRB AutoPro"),
+    ("brb-autopro.html", "Detailing"),
     ("beaucaire-informatique.html", "Informatique"),
     ("brb-multiservices.html", "Multiservices"),
 ]
